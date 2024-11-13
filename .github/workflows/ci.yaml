@@ -1,7 +1,7 @@
 name: React.js CI
 
 on:
-  push:
+  pull_request:
     branches: "master"
 
 jobs:
@@ -37,6 +37,9 @@ jobs:
         working-directory: ./quiz-app
 
               # Setup sonar-sca
+      - name: Setup SonarQube
+        uses: warchant/setup-sonar-scanner@v8
+
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
@@ -51,7 +54,6 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.sources=src/
             -Dsonar.verbose=true
-            -Dsonar.branch.name=${{ github.ref_name }}
         
   backend-test:
     runs-on: ubuntu-latest
@@ -81,6 +83,9 @@ jobs:
           CI: true 
 
               # Setup sonar-scanner
+      - name: Setup SonarQube
+        uses: warchant/setup-sonar-scanner@v8
+
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
@@ -95,7 +100,6 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.sources=.
             -Dsonar.verbose=true
-            -Dsonar.branch.name=master
           
 
   frontend-security:
