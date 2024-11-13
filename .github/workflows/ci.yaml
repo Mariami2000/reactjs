@@ -54,6 +54,7 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.sources=src/
             -Dsonar.verbose=true
+            -Dsonar.branch.name=master
         
   backend-test:
     runs-on: ubuntu-latest
@@ -97,6 +98,7 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.sources=.
             -Dsonar.verbose=true
+            -Dsonar.branch.name=master
           
 
   frontend-security:
