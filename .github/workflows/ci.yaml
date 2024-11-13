@@ -37,9 +37,6 @@ jobs:
         working-directory: ./quiz-app
 
               # Setup sonar-sca
-      - name: Setup SonarQube
-        uses: warchant/setup-sonar-scanner@v8
-
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
