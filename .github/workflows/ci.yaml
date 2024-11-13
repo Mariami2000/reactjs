@@ -54,7 +54,7 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.sources=src/
             -Dsonar.verbose=true
-            -Dsonar.branch.name=master
+            -Dsonar.branch.name=${{ github.ref_name }}
         
   backend-test:
     runs-on: ubuntu-latest
